@@ -1,0 +1,48 @@
+BASICO:
+v -> OR
+^ -> AND
+¬ -> NOT
+
+Las variables pueden tomar valor true/ON(1) y false/OFF(0).
+
+FORMATO FICHERO:
+Las lineas de comandos empiezan con una c.
+c Esto es un comentario
+
+(A v ¬B v C) ^ (B v D v E) ^ (D v F)
+
+La linea del problema empieza con una p.
+p FORMAT VARIABLES CLAUSES
+FORMAT-> Siempre cnf.
+VARIABLES-> Contador del numero de variables del problema.
+CLAUSES-> Is the number of clauses of the problem.
+(A v ¬B v C) ^ (B v D v E) ^ (D V F)
+      1      +      1      +    1    =   3
+
+p cnf 6 3
+
+Le sigue una linea de las variables numericas de 1 a n.
+A,B,C,D,E,F
+1,2,3,4,5,6
+
+- == ¬
+-1 == ¬A
+(A v ¬B v C) == 1 -2 3
+Ponemos un 0 al final de la clausula.
+1 -2 3 0
+(B v D v E) == 2 4 5 0
+(D v F) == 4 6 0
+
+Luego:
+(A v ¬B v C) ^ (B v D v E) ^ (D v F) == 1 -2 3 0 2 4 5 0 4 6 0
+
+
+Luego el fichero quedaria:
+c Programa Dimacs para CC.
+p cnf 6 3
+
+1,2,3,4,5,6
+
+1 -2 3 0
+2 4 5 0
+4 6 0
